@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('character')->nullable();
             $table->string('photo')->nullable();
             $table->string('id_actor')->unique();
-            $table->unsignedBigInteger('movies_id')->nullable();
+            $table->unsignedBigInteger('movies_id');
             $table->timestamps();
 
             $table->foreign('movies_id')->references('id')->on('movies')->onDelete('cascade');

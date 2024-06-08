@@ -23,7 +23,7 @@ class MovieController extends Controller
         try {
             $movies = Movie::paginate($perPage);
 
-            return $this->sendResult(true, 'Todos las películas se han enviado.', $movies);
+            return $this->sendResult(true, 'Todas las películas se han enviado.', $movies);
         } catch (Exception $e) {
             return $this->sendResult(false, 'La película no se ha encontrado.', [], 500);
         }
@@ -52,7 +52,7 @@ class MovieController extends Controller
             'total_note' => 'nullable',
             'total_registered' => 'nullable',
             'num_favorite' => 'nullable',
-            'ip_api' => 'required|unique:movies,ip_api',
+            'ip_api' => 'required | unique:movies,ip_api',
         ]);
 
         try {
@@ -97,7 +97,7 @@ class MovieController extends Controller
     public function update(Request $request, string $id)
     {
         $params = $request->validate([
-            'title' => 'required',
+            'title' => 'nullable',
             'poster' => 'nullable',
             'description' => 'nullable',
             'genre' => 'nullable',
@@ -106,13 +106,10 @@ class MovieController extends Controller
             'total_note' => 'nullable',
             'total_registered' => 'nullable',
             'num_favorite' => 'nullable',
-            'ip_api' => 'required',
+            'ip_api' => 'nullable',
         ]);
 
         try {
-            Movie::create($params);
-            $movie = Movie::latest()->first();
-
             $movie = Movie::find($id);
 
             if ($movie == null) {

@@ -23,7 +23,7 @@ class SerieController extends Controller
         try {
             $series = Serie::paginate($perPage);
 
-            return $this->sendResult(true, 'Todos las series se han enviado.', $series);
+            return $this->sendResult(true, 'Todas las series se han enviado.', $series);
         } catch (Exception $e) {
             return $this->sendResult(false, 'La serie no se ha encontrado.', [], 500);
         }
@@ -99,7 +99,7 @@ class SerieController extends Controller
     public function update(Request $request, string $id)
     {
         $params = $request->validate([
-            'title' => 'required',
+            'title' => 'nullable',
             'poster' => 'nullable',
             'description' => 'nullable',
             'genre' => 'nullable',
@@ -110,7 +110,7 @@ class SerieController extends Controller
             'num_favorite' => 'nullable',
             'num_season' => 'nullable',
             'num_chapter' => 'nullable',
-            'ip_api' => 'required',
+            'ip_api' => 'nullable',
         ]);
 
         try {

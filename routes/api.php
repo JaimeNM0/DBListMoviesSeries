@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\ActorController;
+use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\SerieController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,5 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+Route::apiResource('users', UserController::class);
 Route::apiResource('series', SerieController::class);
 Route::apiResource('movies', MovieController::class);
+Route::apiResource('chapters', ChapterController::class);
+Route::apiResource('actors', ActorController::class);
