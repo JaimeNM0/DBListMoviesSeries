@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('poster');
-            $table->text('description');
-            $table->json('genre');
-            $table->string('duration');
-            $table->string('year');
+            $table->string('poster')->nullable();
+            $table->text('description')->nullable();
+            $table->json('genre')->nullable();
+            $table->string('duration')->nullable();
+            $table->string('year')->nullable();
             $table->decimal('total_note', 2, 2)->nullable();
             $table->integer('total_registered')->nullable();
             $table->integer('num_favorite')->nullable();
-            $table->string('ip_api');
+            $table->string('ip_api')->unique();
             $table->timestamps();
         });
     }

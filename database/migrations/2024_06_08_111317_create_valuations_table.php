@@ -19,7 +19,7 @@ return new class extends Migration
             $table->boolean('favorite')->default(false);
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
-            $table->unsignedBigInteger('users_id');
+            $table->unsignedBigInteger('users_id')->unique();
             $table->unsignedBigInteger('movies_id')->nullable();
             $table->unsignedBigInteger('series_id')->nullable();
             $table->timestamps();
