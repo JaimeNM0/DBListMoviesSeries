@@ -61,7 +61,7 @@ class ActorController extends Controller
         try {
             $actor = Actor::find($id);
 
-            if ($actor == null) {
+            if (empty($actor)) {
                 return $this->sendResult(false, 'El actor no se ha encontrado.', [], 404);
             }
 
@@ -95,7 +95,7 @@ class ActorController extends Controller
         try {
             $actor = Actor::find($id);
 
-            if ($actor == null) {
+            if (empty($actor)) {
                 return $this->sendResult(false, 'El actor no se ha encontrado.', [], 404);
             }
 
@@ -135,7 +135,7 @@ class ActorController extends Controller
         try {
             $actor = Actor::find($id);
 
-            if ($actor == null) {
+            if (empty($actor)) {
                 return $this->sendResult(false, 'El actor no se ha encontrado.', [], 404);
             }
 

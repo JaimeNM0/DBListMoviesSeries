@@ -75,7 +75,7 @@ class SerieController extends Controller
         try {
             $serie = Serie::find($id);
 
-            if ($serie == null) {
+            if (empty($serie)) {
                 return $this->sendResult(false, 'La serie no se ha encontrado.', [], 404);
             }
 
@@ -116,7 +116,7 @@ class SerieController extends Controller
         try {
             $serie = Serie::find($id);
 
-            if ($serie == null) {
+            if (empty($serie)) {
                 return $this->sendResult(false, 'La serie no se ha encontrado.', [], 404);
             }
 
@@ -184,7 +184,7 @@ class SerieController extends Controller
         try {
             $serie = Serie::find($id);
 
-            if ($serie == null) {
+            if (empty($serie)) {
                 return $this->sendResult(false, 'La serie no se ha encontrado.', [], 404);
             }
 

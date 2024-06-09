@@ -61,7 +61,7 @@ class ChapterController extends Controller
         try {
             $chapter = Chapter::find($id);
 
-            if ($chapter == null) {
+            if (empty($chapter)) {
                 return $this->sendResult(false, 'El capítulo no se ha encontrado.', [], 404);
             }
 
@@ -95,7 +95,7 @@ class ChapterController extends Controller
         try {
             $chapter = Chapter::find($id);
 
-            if ($chapter == null) {
+            if (empty($chapter)) {
                 return $this->sendResult(false, 'El capítulo no se ha encontrado.', [], 404);
             }
 
@@ -135,7 +135,7 @@ class ChapterController extends Controller
         try {
             $chapter = Chapter::find($id);
 
-            if ($chapter == null) {
+            if (empty($chapter)) {
                 return $this->sendResult(false, 'El capítulo no se ha encontrado.', [], 404);
             }
 

@@ -73,7 +73,7 @@ class MovieController extends Controller
         try {
             $movie = Movie::find($id);
 
-            if ($movie == null) {
+            if (empty($movie)) {
                 return $this->sendResult(false, 'La película no se ha encontrado.', [], 404);
             }
 
@@ -112,7 +112,7 @@ class MovieController extends Controller
         try {
             $movie = Movie::find($id);
 
-            if ($movie == null) {
+            if (empty($movie)) {
                 return $this->sendResult(false, 'La película no se ha encontrado.', [], 404);
             }
 
@@ -172,7 +172,7 @@ class MovieController extends Controller
         try {
             $movie = Movie::find($id);
 
-            if ($movie == null) {
+            if (empty($movie)) {
                 return $this->sendResult(false, 'La película no se ha encontrado.', [], 404);
             }
 

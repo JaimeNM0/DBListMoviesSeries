@@ -71,7 +71,7 @@ class UserController extends Controller
         try {
             $user = User::find($id);
 
-            if ($user == null) {
+            if (empty($user)) {
                 return $this->sendResult(false, 'El usuario no se ha encontrado.', [], 404);
             }
 
@@ -108,7 +108,7 @@ class UserController extends Controller
         try {
             $user = User::find($id);
 
-            if ($user == null) {
+            if (empty($user)) {
                 return $this->sendResult(false, 'El usuario no se ha encontrado.', [], 404);
             }
 
@@ -139,7 +139,7 @@ class UserController extends Controller
             if (!empty($params['email'])) {
                 if ($user->email != $params['email']) {
                     $user_email = User::where('email', $user->email)->first();
-                    if ($user_email == null) {
+                    if (empty($user_email)) {
                         $user->email = $params['email'];
                     } else {
                         return $this->sendResult(false, 'Este correo electrónico ' . $params['email'] . ' no se puede utilizar.', [], 400);
@@ -167,7 +167,7 @@ class UserController extends Controller
         try {
             $user = User::find($id);
 
-            if ($user == null) {
+            if (empty($user)) {
                 return $this->sendResult(false, 'El usuario no se ha encontrado.', [], 404);
             }
 
