@@ -196,9 +196,9 @@ class UserController extends Controller
                 $valuations = User::find($id)->filterByBrandAndContentValuations($params['brand'], $params['content']);
             }
 
-            return $this->sendResult(true, 'La película se ha obtenido correctamente.', data: $valuations);
+            return $this->sendResult(true, 'La serie o película se ha obtenido correctamente.', data: $valuations);
         } catch (Exception $e) {
-            return $this->sendResult(false, 'El usuario no se ha borrado.', [], 500);
+            return $this->sendResult(false, 'La serie o película no se ha encontrado.', [], 500);
         }
     }
 }
