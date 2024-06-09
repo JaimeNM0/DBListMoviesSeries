@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('character')->nullable();
             $table->string('photo')->nullable();
-            $table->string('id_actor')->unique();
+            $table->string('id_actor');
             $table->unsignedBigInteger('movies_id');
             $table->timestamps();
 

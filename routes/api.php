@@ -5,6 +5,7 @@ use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ValuationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,9 @@ Route::apiResource('series', SerieController::class);
 Route::apiResource('movies', MovieController::class);
 Route::apiResource('chapters', ChapterController::class);
 Route::apiResource('actors', ActorController::class);
+
+Route::apiResource('valuations', ValuationController::class);
+Route::get('valuations/{id}/user', [ValuationController::class, 'getValuationUser']);
+Route::get('valuations/{id}/content', [ValuationController::class, 'getValuationContent']);
+
+Route::get('users/{id}/valuations', [UserController::class, 'getUserValuations']);

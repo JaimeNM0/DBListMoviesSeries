@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Valuation;
 
 class User extends Authenticatable
 {
@@ -28,9 +29,28 @@ class User extends Authenticatable
         'password',
     ];
 
+    /**
+     * Trae todas las valoraciones del usuario.
+     */
     public function valuations()
     {
-        return $this->hasMany(Valuation::class);
+        return $this->hasMany(Valuation::class, 'users_id');
+    }
+
+    /**
+     * Trae todas las valoraciones que coincidad con el contenido elegido del usuario.
+     */
+    public function filterByContentValuations($content)
+    {
+        return $this->valuations()->filterByContent($content)->get();
+    }
+
+    /**
+     * Trae todas las valoraciones que coincidad con la marca y el contenido elegido del usuario.
+     */
+    public function filterByBrandAndContentValuations($brand, $content)
+    {
+        return $this->valuations()->filterByBrandAndContent($brand, $content)->get();
     }
 
     /**

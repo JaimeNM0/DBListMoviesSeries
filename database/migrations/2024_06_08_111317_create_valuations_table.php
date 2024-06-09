@@ -15,11 +15,13 @@ return new class extends Migration
             $table->id();
             $table->decimal('note', 2, 2)->nullable();
             $table->text('opinion')->nullable();
-            $table->enum('brand', ['planeada', 'viendola', 'vista', 'en espera', 'dejada'])->default('planeada');
+            //$table->enum('brand', ['planeada', 'viendola', 'vista', 'en espera', 'dejada'])->default('planeada');
+            $table->enum('brand', ['planned', 'watching', 'completed', 'on hold', 'dropped'])->default('planned');
             $table->boolean('favorite')->default(false);
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
-            $table->unsignedBigInteger('users_id')->unique();
+            //$table->integer('num_chapter_watched')->nullable();
+            $table->unsignedBigInteger('users_id');
             $table->unsignedBigInteger('movies_id')->nullable();
             $table->unsignedBigInteger('series_id')->nullable();
             $table->timestamps();

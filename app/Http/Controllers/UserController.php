@@ -178,4 +178,27 @@ class UserController extends Controller
             return $this->sendResult(false, 'El usuario no se ha borrado.', [], 500);
         }
     }
+
+    /**
+     * Trae la información de las valoraciones que están vinculadas al usuario filtrando brand y content.
+     */
+    public function getUserValuations(Request $request, $id)
+    {
+        $params = $request->validate([
+            'brand' => 'required | in:all,planned,watching,completed,on hold,dropped',
+            'content' => 'required | in:movies,series',
+        ]);
+
+        try {
+            if ($params['brand'] == 'all') {
+                $valuations = User::find($id)->filterByContentValuations($params['content']);
+            } else {
+                $valuations = User::find($id)->filterByBrandAndContentValuations($params['brand'], $params['content']);
+            }
+
+            return $this->sendResult(true, 'La película se ha obtenido correctamente.', data: $valuations);
+        } catch (Exception $e) {
+            return $this->sendResult(false, 'El usuario no se ha borrado.', [], 500);
+        }
+    }
 }
